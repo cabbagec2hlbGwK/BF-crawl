@@ -1,0 +1,6 @@
+Flask==2.3.2
+kubernetes==31.0.0
+requests==2.32.3
+selenium==4.27.1
+stem==1.8.1
+webdriver_manager==4.0.0

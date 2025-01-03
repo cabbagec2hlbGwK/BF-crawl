@@ -1,5 +1,23 @@
 # Application Setup Guide
 
+## Architecture Overview
+
+This application consists of two main components:
+
+1. **AgentHandler**: This component is responsible for:
+
+   - Creating agents and maintaining their states.
+   - Restarting agents if something goes wrong.
+   - Distributing tasks and determining which pages to crawl.
+   - Managing the task pipeline to ensure smooth operation.
+
+2. **ApplicationHandler**: This component handles:
+
+   - Providing core functionalities like solving captchas.
+   - Managing other related operations required for the application.
+
+Together, these components work seamlessly to ensure the application runs efficiently and handles its tasks effectively.
+
 ## What You Need
 
 Before you start, make sure you have these installed:
@@ -10,13 +28,13 @@ Before you start, make sure you have these installed:
 
 ## How to Run the App
 
-### Step 1: Build the Agent Image
+### Step 1: Clone the Repository and Build the Agent Image
 
-1. Open a terminal and go to the `agent` folder:
+1. Open a terminal and clone the repository:
    ```bash
-   git clone "" && cd bf-crall
+   git clone https://github.com/cabbagec2hlbGwK/BF-crawl-.git && cd BF-crawl
    ```
-2. Open a terminal and go to the `agent` folder:
+2. Navigate to the `agent` folder:
    ```bash
    cd agent
    ```
@@ -48,7 +66,6 @@ Before you start, make sure you have these installed:
    You can set these in your terminal or create an `.env` file to load them automatically.
 
 2. Start the app with Docker Compose:
-
    ```bash
    docker-compose -f deploy.yaml up
    ```
@@ -68,7 +85,5 @@ Before you start, make sure you have these installed:
 - **Port Problems:** Check that no other programs are using the ports the app needs.
 
 ---
-
-T
 
 

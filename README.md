@@ -28,7 +28,7 @@ Before you start, make sure you have these installed:
 
 ## How to Run the App
 
-### Step 1: Clone the Repository and Build the Agent Image
+### Step 3: Clone the Repository and Build the Agent Image
 
 1. Open a terminal and clone the repository:
    ```bash
@@ -62,6 +62,14 @@ Before you start, make sure you have these installed:
    - `ELASTIC_API`: The API endpoint for Elasticsearch
    - `ELASTIC_HOST`: The address of your Elasticsearch server
    - `ELASTIC_INDEX`: The name of your Elasticsearch index
+   - `BF_CREDS`: Credentials for the BF system. The format for these credentials should look like this:
+     ```json
+     [
+       {"username1": "password1"},
+       {"username2": "password2"},
+       {"username3": "password3"}
+     ]
+     ```
 
    You can set these in your terminal or create an `.env` file to load them automatically.
 

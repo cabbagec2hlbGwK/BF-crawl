@@ -11,6 +11,7 @@ RUN apt install python3-opencv -y
 RUN apt install python3-docker -y
 ENV OPENAI_API_KEY=""
 ENV CONTAINER_NAME=""
+ENV BF_CREDS=""
 COPY . .
 
 CMD ["bash", "-c", "/app/master/run.sh"]

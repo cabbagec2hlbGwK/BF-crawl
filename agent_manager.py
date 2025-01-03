@@ -147,7 +147,7 @@ class ManageAgent:
 def main():
     #def __init__(self, creds:dict, endpoint, agentMastertPort, applicationPort) -> None:
     app = Flask("AGENT_MANAGER")
-    creds = [{"spiderman1948":"sdfnjsdkFjn#@s0"},{"falcondick":"FuckTrump@123"},{"rusianlan22":"sdlfsjldflF@121"}]
+    creds = json.loads(os.getenv("BF_CREDS","{}"))
     agentHost = os.getenv("CONTAINER_NAME")
     endpoint = f"http://{agentHost}"
     agentMasterPort = "5050"

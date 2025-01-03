@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   masternode:
-    image: master  # Replace with your desired image name
+    image: bf-master  # Replace with your desired image name
     container_name: masternode
     volumes:
       - /usr/bin/docker:/usr/bin/docker
@@ -16,6 +16,7 @@ services:
       ELASTIC_INDEX: ${ELASTIC_INDEX}
       CONTAINER_NAME: masternode
       NETWORK_NAME: app-network
+      BF_CREDS: ${BF_CREDS}
 
 networks:
   app-network:

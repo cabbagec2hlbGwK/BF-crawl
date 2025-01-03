@@ -96,7 +96,7 @@ fi
 
 # Run the Python script
 
-python3 agent.py
+python3 agent.py >> /tmp/applog.txt
 
 
 

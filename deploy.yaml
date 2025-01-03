@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  masternode:
+    image: master  # Replace with your desired image name
+    container_name: masternode
+    volumes:
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-network
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ELASTIC_API: ${ELASTIC_API}
+      ELASTIC_HOST: ${ELASTIC_HOST}
+      ELASTIC_INDEX: ${ELASTIC_INDEX}
+      CONTAINER_NAME: masternode
+      NETWORK_NAME: app-network
+
+networks:
+  app-network:
+    driver: bridge
+    name: app-network
+

@@ -23,5 +23,5 @@ scope = {
     "Forum - Services": "https://breachforums.st/Forum-Services",
     "Forum - Sellers Place": "https://breachforums.st/Forum-Sellers-Place",
     "Forum - Buyers Place": "https://breachforums.st/Forum-Buyers-Place",
-    "Forum Statistics": "https://breachforums.st/stats.php",
+    "Statistics": "https://breachforums.st/stats.php",
 }

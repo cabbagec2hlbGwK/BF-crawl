@@ -1,8 +1,8 @@
 import json
+import os
 import uuid
 import base64
 import capta2text
-from utils.agent_manager import Agent
 from flask import Flask, request
 from capta2text import getCaptaText
 
@@ -15,6 +15,7 @@ def process_image(file_path):
 
 def main():
     app =Flask("Agent_Handeler")
+    agentHost = os.getenv("CONTAINER_NAME")
 
     @app.route("/capta", methods = ['POST'])
     def submitCapta():
@@ -35,11 +36,12 @@ def main():
 
 
 
-    @app.route("/", methods = ['GET'])
+    @app.route("/api/canada/stats", methods = ['POST'])
     def home():
+        print(request.json)
         return ""
 
-    app.run(host="agent1", port=8000)
+    app.run(host=agentHost, port=8000)
 
 
 if __name__=="__main__":

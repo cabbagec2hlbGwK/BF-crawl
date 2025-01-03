@@ -44,7 +44,7 @@ class Browser:
         fileName = self.GetCaptaImage()
         with open(fileName,"rb") as img:
             files = {'file': img}
-            response = requests.post(endpoint, files=files)
+            response = requests.post(endpoint, files=files, timeout=20)
             print(response.content)
             value = json.loads(response.content).get("text","NUL")
             if value == "NUL":
@@ -84,10 +84,38 @@ class Browser:
             pass
     def breachFormLogin(self, user, password, endpoint):
         self.browser.get("https://breachforums.st/member.php?action=login")
+        time.sleep(8)
+        element = self.browser.find_element(By.TAG_NAME, "body")
+        element.screenshot("loginScreen.png")
         self.fillCreds(user, password)
         self.completeCapta(endpoint)
         self.loginSubmit()
-        return self.loginStatus()
+        time.sleep(2)
+        element = self.browser.find_element(By.TAG_NAME, "body")
+        element.screenshot("loginScreenAfter.png")
         
-        pass
+        return self.loginStatus()
+
+    def getPageSource(self, url):
+        self.browser.get(url)
+        time.sleep(3)
+        data = self.browser.page_source
+        return data
+
+    def getForumLinks(self, forum, url, maxPages=2):
+        self.browser.get(url)
+        time.sleep(4)
+        links = []
+        pageQuery= ""
+        for page in range(maxPages):
+            if page != 1:
+                pageQuery = f"?page={page}"
+            self.browser.get(f"{url}{pageQuery}")
+            time.sleep(3)
+            spans = self.browser.find_elements(By.CLASS_NAME, "subject_old")
+            for span in spans:
+                link = span.find_element(By.TAG_NAME,"a").get_attribute("href")
+                links.append(link)
+        return links
+
 

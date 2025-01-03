@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     curl \
     gnupg \
-    python3 \
+    python3.10 \
     python3-pip \
     apt-transport-https \
     ca-certificates \
@@ -41,8 +41,7 @@ RUN echo "SETTING UP SCREEN --------------"
 RUN pip3 install --no-cache-dir \
     requests \
     selenium \
-    webdriver_manager \
-    openai-whisper
+    webdriver_manager 
 
 # Optional: Add a basic Tor configuration file
 RUN mkdir -p /etc/tor
@@ -52,6 +51,7 @@ COPY . .
 # Expose ports if using Tor
 RUN pip install stem
 EXPOSE 9050 9051
+RUN pip install elasticsearch
 
 # Set the entrypoint (default to bash for flexibility)
 CMD ["/bin/bash", "-c", "./run.sh"]
